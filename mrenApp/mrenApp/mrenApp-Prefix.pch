@@ -1,0 +1,57 @@
+//
+//  Fate-Prefix.pch
+//  fate
+//
+//  Created by 周恩 on 15/10/26.
+//  Copyright © 2015年 zhouen. All rights reserved.
+//
+
+#ifndef Fate_Prefix_pch
+#define Fate_Prefix_pch
+
+    #ifdef __OBJC__
+        #import <UIKit/UIKit.h>
+        #import <Foundation/Foundation.h>
+
+        #import "MEUser.h"              //全局用户信息
+        #import "MEAppVersion.h"        //全局版本信息
+        #import "BaseMacro.h"
+
+        #import "MEBaseViewController.h"
+        #import "MEBaseNavigationController.h"
+
+        #import "UIView+Extension.h"
+        #import "UIViewController+HUD.h"
+        #import "NSUserDefaults+Extension.h"
+        #import "UIView+Toast.h"
+        #import "UIScrollView+Refresh.h"
+        #import "URLUtil.h"
+
+        #import "HttpRequest.h"
+
+        #import "Masonry.h"
+        #import "MBProgressHUD.h"
+        #import "MJExtension.h"
+        #import "MJRefresh.h"
+        #import <FLAnimatedImage/FLAnimatedImage.h> //GIF 图片加载
+        #import <ReactiveViewModel/ReactiveViewModel.h>
+        #import <ReactiveCocoa/ReactiveCocoa.h>
+        #import <SDWebImage/UIImageView+WebCache.h>
+
+
+
+    #endif
+
+
+    #ifdef DEBUG
+        // 调试阶段
+        #define NSLog(...) NSLog(__VA_ARGS__)
+    #else
+        // 发布阶段
+        #define NSLog(...)
+    #endif
+
+
+#endif /* Fate_Prefix_pch */
+
+
