@@ -76,6 +76,8 @@
 		B85C19E31E14178F003CD288 /* tabbar_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B85C19E11E14178F003CD288 /* tabbar_mine@2x.png */; };
 		B85C19E41E14178F003CD288 /* tabbar_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B85C19E21E14178F003CD288 /* tabbar_mine@3x.png */; };
 		B862B2841DF55DA100970977 /* MEAlbumImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B862B2831DF55DA100970977 /* MEAlbumImageViewModel.m */; };
+		B86B460A1E84BE4300072AAD /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B86B46091E84BE4300072AAD /* CustomTabBar.m */; };
+		B86B460D1E85045300072AAD /* UIView+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B86B460C1E85045300072AAD /* UIView+HUD.m */; };
 		B87325241E1260E8009A8F69 /* NSString+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B87325171E1260E8009A8F69 /* NSString+PYSearchExtension.m */; };
 		B87325251E1260E8009A8F69 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B87325181E1260E8009A8F69 /* PYSearch.bundle */; };
 		B87325261E1260E8009A8F69 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B873251B1E1260E8009A8F69 /* PYSearchConst.m */; };
@@ -87,9 +89,7 @@
 		B87325301E127A8A009A8F69 /* MESearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B873252F1E127A8A009A8F69 /* MESearchResultViewController.m */; };
 		B87866B81DF95EA700CBBE0A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B87866B71DF95EA700CBBE0A /* UIImage+ImageEffects.m */; };
 		B87866BC1DF95F8500CBBE0A /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87866BB1DF95F8500CBBE0A /* ParallaxHeaderView.m */; };
-		B88880741E160A2100C83EC1 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B88880731E160A2100C83EC1 /* UIViewController+HUD.m */; };
 		B88880791E160D3900C83EC1 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = B88880781E160D3900C83EC1 /* gif.gif */; };
-		B888807C1E1616A500C83EC1 /* mm_arse.gif in Resources */ = {isa = PBXBuildFile; fileRef = B888807B1E1616A500C83EC1 /* mm_arse.gif */; };
 		B888807E1E16560800C83EC1 /* loading_error.png in Resources */ = {isa = PBXBuildFile; fileRef = B888807D1E16560800C83EC1 /* loading_error.png */; };
 		B88880801E165D3B00C83EC1 /* loading_noData.png in Resources */ = {isa = PBXBuildFile; fileRef = B888807F1E165D3B00C83EC1 /* loading_noData.png */; };
 		B88F39211E07920F00056123 /* UIScrollView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B88F39201E07920F00056123 /* UIScrollView+Refresh.m */; };
@@ -265,6 +265,10 @@
 		B85C19E21E14178F003CD288 /* tabbar_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_mine@3x.png"; sourceTree = "<group>"; };
 		B862B2821DF55DA100970977 /* MEAlbumImageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAlbumImageViewModel.h; sourceTree = "<group>"; };
 		B862B2831DF55DA100970977 /* MEAlbumImageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEAlbumImageViewModel.m; sourceTree = "<group>"; };
+		B86B46081E84BE4300072AAD /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
+		B86B46091E84BE4300072AAD /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
+		B86B460B1E85045300072AAD /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
+		B86B460C1E85045300072AAD /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
 		B87325161E1260E8009A8F69 /* NSString+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PYSearchExtension.h"; sourceTree = "<group>"; };
 		B87325171E1260E8009A8F69 /* NSString+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PYSearchExtension.m"; sourceTree = "<group>"; };
 		B87325181E1260E8009A8F69 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -286,10 +290,7 @@
 		B87866B71DF95EA700CBBE0A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		B87866BA1DF95F8500CBBE0A /* ParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxHeaderView.h; sourceTree = "<group>"; };
 		B87866BB1DF95F8500CBBE0A /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
-		B88880721E160A2100C83EC1 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
-		B88880731E160A2100C83EC1 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		B88880781E160D3900C83EC1 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
-		B888807B1E1616A500C83EC1 /* mm_arse.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mm_arse.gif; sourceTree = "<group>"; };
 		B888807D1E16560800C83EC1 /* loading_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_error.png; sourceTree = "<group>"; };
 		B888807F1E165D3B00C83EC1 /* loading_noData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_noData.png; sourceTree = "<group>"; };
 		B88F391F1E07920F00056123 /* UIScrollView+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Refresh.h"; sourceTree = "<group>"; };
@@ -841,6 +842,8 @@
 		B857D2371DF00BB70088DEC9 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				B86B46081E84BE4300072AAD /* CustomTabBar.h */,
+				B86B46091E84BE4300072AAD /* CustomTabBar.m */,
 				B857D2381DF00BB70088DEC9 /* TabBarViewController.h */,
 				B857D2391DF00BB70088DEC9 /* TabBarViewController.m */,
 			);
@@ -906,8 +909,8 @@
 				B857D2471DF01D370088DEC9 /* UIView+Extension.m */,
 				B88F391F1E07920F00056123 /* UIScrollView+Refresh.h */,
 				B88F39201E07920F00056123 /* UIScrollView+Refresh.m */,
-				B88880721E160A2100C83EC1 /* UIViewController+HUD.h */,
-				B88880731E160A2100C83EC1 /* UIViewController+HUD.m */,
+				B86B460B1E85045300072AAD /* UIView+HUD.h */,
+				B86B460C1E85045300072AAD /* UIView+HUD.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1005,7 +1008,6 @@
 				B8FDC74F1E2389D000575C82 /* loading_normal.gif */,
 				B888807F1E165D3B00C83EC1 /* loading_noData.png */,
 				B888807D1E16560800C83EC1 /* loading_error.png */,
-				B888807B1E1616A500C83EC1 /* mm_arse.gif */,
 			);
 			path = loading;
 			sourceTree = "<group>";
@@ -1283,7 +1285,6 @@
 				B8E56E121DF9421F0049D794 /* login_password@3x.png in Resources */,
 				B8FDC7501E2389D000575C82 /* loading_normal.gif in Resources */,
 				B8E56E111DF9421F0049D794 /* login_password@2x.png in Resources */,
-				B888807C1E1616A500C83EC1 /* mm_arse.gif in Resources */,
 				B857D2071DEFC4240088DEC9 /* Assets.xcassets in Resources */,
 				B88880801E165D3B00C83EC1 /* loading_noData.png in Resources */,
 				B84B0EDB1DFA8D6700F06A49 /* mine_panda@3x.png in Resources */,
@@ -1411,6 +1412,7 @@
 				B82C56B11DFB0FC7000F3BCA /* MEUpdateSexSheet.m in Sources */,
 				B8FE4CCD1DF8189C005EEBD9 /* IDMZoomingScrollView.m in Sources */,
 				B84B0EFE1DFAB98600F06A49 /* UIView+Toast.m in Sources */,
+				B86B460A1E84BE4300072AAD /* CustomTabBar.m in Sources */,
 				B82C56AB1DFB0E1E000F3BCA /* MEActionSheet.m in Sources */,
 				B8345CD71E10F35500AF6297 /* MEAboutUsViewController.m in Sources */,
 				B8FE4CC61DF8189C005EEBD9 /* IDMCaptionView.m in Sources */,
@@ -1426,12 +1428,12 @@
 				B8A42BAD1DF9A7D40096D0DD /* MEItem.m in Sources */,
 				B87325281E1260E8009A8F69 /* PYSearchViewController.m in Sources */,
 				B81BFF2B1DFC447700EC033F /* NSObject+LKProperty.m in Sources */,
-				B88880741E160A2100C83EC1 /* UIViewController+HUD.m in Sources */,
 				B857D23D1DF00BB70088DEC9 /* MEHomeViewController.m in Sources */,
 				B87325301E127A8A009A8F69 /* MESearchResultViewController.m in Sources */,
 				B857D1FF1DEFC4240088DEC9 /* AppDelegate.m in Sources */,
 				B88F39211E07920F00056123 /* UIScrollView+Refresh.m in Sources */,
 				B87325241E1260E8009A8F69 /* NSString+PYSearchExtension.m in Sources */,
+				B86B460D1E85045300072AAD /* UIView+HUD.m in Sources */,
 				B80DA8A11DF0676F009E1A43 /* MEHomeListViewController.m in Sources */,
 				B8E8D3301DF1DD96009476A2 /* MEPhotoAlbumRequest.m in Sources */,
 				B80DA8B71DF0720A009E1A43 /* ZNWaterfallLayout.m in Sources */,

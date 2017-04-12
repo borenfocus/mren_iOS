@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"关于妹子";
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:webView];
     webView.backgroundColor = MAIN_COLOR;

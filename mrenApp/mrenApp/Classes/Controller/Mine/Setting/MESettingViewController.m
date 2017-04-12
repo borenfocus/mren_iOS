@@ -104,8 +104,9 @@
 
 #pragma mark 去评分
 - (void)p_toAppStoreGraded {
-    NSString *str = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", @"1191484225"];
+    NSString *str = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8", @"1191484225"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
 }
 
 

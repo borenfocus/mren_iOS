@@ -19,7 +19,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentView.backgroundColor=[self randomColor];
+//    self.contentView.backgroundColor=[self randomColor];
 }
 
 - (void)setAlbum:(MEAlbum *)album {

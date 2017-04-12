@@ -75,15 +75,9 @@
         return [MEAlbum mj_objectArrayWithKeyValuesArray:value];
     }] subscribeNext:^(NSArray *x) {
         @strongify(self);
-        if (x.count > 0) {
-            NSMutableArray *array = [NSMutableArray arrayWithArray:self.albums];
-            [array addObjectsFromArray:x];
-            self.albums = [NSArray arrayWithArray:array];
-        } else {
-            if (_refreshError) {
-                _refreshError(nil);
-            }
-        }
+        NSMutableArray *array = [NSMutableArray arrayWithArray:self.albums];
+        [array addObjectsFromArray:x];
+        self.albums = [NSArray arrayWithArray:array];
     } error:^(NSError *error) {
         if (_refreshError) {
             _refreshError(error);

@@ -21,7 +21,7 @@
         #import "MEBaseNavigationController.h"
 
         #import "UIView+Extension.h"
-        #import "UIViewController+HUD.h"
+        #import "UIView+HUD.h"
         #import "NSUserDefaults+Extension.h"
         #import "UIView+Toast.h"
         #import "UIScrollView+Refresh.h"

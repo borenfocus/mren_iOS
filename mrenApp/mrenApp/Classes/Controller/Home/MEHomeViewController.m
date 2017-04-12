@@ -53,23 +53,20 @@ static NSString *const reuserIdentifer = @"collectionCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = MAIN_COLOR;
     
     [self p_setupSubview];
     [self p_initObserver];
     [self p_checkUpdate];
     
-    [self showHudWithState:HudStateLoading tapBlock:^{
-        NSLog(@"loading");
-    }];
+//    [self showHudWithState:HudStateLoading tapBlock:^{
+//        NSLog(@"loading");
+//    }];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.navigationItem.titleView = self.searchBar;
     
     if (!self.categoryViewModel.categories ) {
         self.categoryViewModel.active = YES;
@@ -142,6 +139,7 @@ static NSString *const reuserIdentifer = @"collectionCell";
     [_searchBar addTarget:self action:@selector(p_searchBarAction) forControlEvents:UIControlEventTouchUpInside];
     return _searchBar;
 }
+
 - (MECategoryViewModel *)categoryViewModel {
     if (!_categoryViewModel) {
         _categoryViewModel = [[MECategoryViewModel alloc] init];
@@ -154,8 +152,11 @@ static NSString *const reuserIdentifer = @"collectionCell";
 
 #pragma mark ------ Private
 - (void)p_setupSubview {
+    self.navigationItem.titleView = self.searchBar;
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 0.1)];
     [self.view addSubview:view];
+    
     [self.view addSubview:self.channelView];
     [self.channelView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(64));
@@ -172,15 +173,17 @@ static NSString *const reuserIdentifer = @"collectionCell";
         make.bottom.equalTo(self.view);
     }];
     
+    
+    
 }
 
 //重新获取分类数据
 - (void)p_reloadCategory {
-    [self showHudWithState:HudStateLoading tapBlock:^{
-        NSLog(@"loading");
-    }];
     
-    
+//    [self showState:HudStateLoading onView:self.collectionView tapBlock:^{
+//        NSLog(@"loading");
+//    }];
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.categoryViewModel requestPhotoCategory_1];
     });
@@ -189,7 +192,7 @@ static NSString *const reuserIdentifer = @"collectionCell";
 
 //检查更新
 - (void)p_checkUpdate {
-    [RACObserve(AppVersion,appState) subscribeNext:^(id x) {
+    [[RACObserve(AppVersion,appState) distinctUntilChanged] subscribeNext:^(id x) {
         [self.collectionView reloadData];
         [self.categoryViewModel requestPhotoCategory_1];
         NSInteger state = [x integerValue];
@@ -216,7 +219,6 @@ static NSString *const reuserIdentifer = @"collectionCell";
     
     [[RACObserve(self.categoryViewModel, categories) deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(id x) {
         @strongify(self);
-        [self hideHud];
         
         NSArray *array = x;
         NSMutableArray *channels = [NSMutableArray arrayWithCapacity:array.count];
@@ -230,9 +232,9 @@ static NSString *const reuserIdentifer = @"collectionCell";
     
     self.categoryViewModel.errorBlock = ^(id error){
         @strongify(self);
-        [self showHudWithState:HudStateError tapBlock:^{
-            [self p_reloadCategory];
-        }];
+//        [self showState:HudStateError onView:self.collectionView tapBlock:^{
+//            [self p_reloadCategory];
+//        }];
     };
     
     

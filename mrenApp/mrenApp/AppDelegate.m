@@ -81,8 +81,7 @@
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _window.backgroundColor = [UIColor whiteColor];
     TabBarViewController *rootVc = [[TabBarViewController alloc] init];
-    MEBaseNavigationController *baseNav = [[MEBaseNavigationController alloc]initWithRootViewController:rootVc];
-    _window.rootViewController = baseNav;
+    _window.rootViewController = rootVc;
     [_window makeKeyAndVisible];
 }
 

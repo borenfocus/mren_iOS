@@ -35,20 +35,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initObserver];
-    [self initRefresh];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.collectionView.backgroundColor = MAIN_COLOR;
     self.collectionView.alwaysBounceVertical = YES;
-    self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MEHomeCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
-    [self showHudWithState:HudStateLoading tapBlock:^{
-        NSLog(@"loading");
-    }];
-    
-    
+    [self initObserver];
+    [self initRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,20 +94,13 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.albumViewModel firtPage];
         if (isNil(self.albumViewModel.albums)) {
-            [self showHudWithState:HudStateLoading tapBlock:nil];
-        } else {
-            [self hideHud];
+            [self.collectionView showState:HudStateLoading tapBlock:nil];
         }
         
     }];
     
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self.albumViewModel nextPage];
-        if (isNil(self.albumViewModel.albums)) {
-            [self showHudWithState:HudStateLoading tapBlock:nil];
-        } else {
-            [self hideHud];
-        }
     }];
 }
 
@@ -122,11 +109,12 @@ static NSString * const reuseIdentifier = @"Cell";
     [[[RACObserve(self.albumViewModel, albums) skip:1] deliverOn:[RACScheduler mainThreadScheduler] ] subscribeNext:^(NSArray *x) {
         @strongify(self);
         if (x.count == 0) {
-            [self showHudWithState:HudStateNoData tapBlock:^{
+            [self.collectionView showState:HudStateNoData tapBlock:^{
                 [self p_requestData];
             }];
+            
         } else {
-            [self hideHud];
+            [self.collectionView hideHud];
         }
         [self.collectionView stopRefresh];
         [self.collectionView reloadData];
@@ -138,7 +126,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.collectionView stopRefresh];
         
         if (isNil(self.albumViewModel.albums)) {
-            [self showHudWithState:HudStateError tapBlock:^{
+            [self.collectionView showState:HudStateError tapBlock:^{
                 [self p_requestData];
             }];
         }

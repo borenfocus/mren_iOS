@@ -33,7 +33,7 @@
 
 
 
-- (BOOL)reflectDataFromOtherObject:(NSObject*)dataSource{
+- (BOOL)reflectDataFromOtherObject:(NSObject*)dataSource {
     
     BOOL ret = NO;
     for (MJProperty *mjProperty in [self propertyKeys]) {
@@ -55,7 +55,7 @@
     
     return ret;
 }
-- (BOOL)clearPropertyValue{
+- (BOOL)clearPropertyValue {
     for (MJProperty *property in [self propertyKeys]) {
         NSString *key = property.name;
         MJPropertyType *type = property.type;
@@ -65,7 +65,6 @@
         } else {
             [self setValue:nil forKey:key];
         }
-        
     }
     return YES;
 }

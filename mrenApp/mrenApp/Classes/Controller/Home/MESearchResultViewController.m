@@ -52,10 +52,6 @@ static NSString * const reuseIdentifier = @"SearchCell";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self initObserver];
     [self initRefresh];
-    
-    [self showHudWithState:HudStateLoading tapBlock:^{
-        NSLog(@"loading");
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,11 +98,12 @@ static NSString * const reuseIdentifier = @"SearchCell";
     [[RACObserve(self.searchViewModel, albums) deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *x) {
         @strongify(self);
         if (x.count == 0) {
-            [self showHudWithState:HudStateNoData tapBlock:^{
+            [self.collectionView showState:HudStateNoData tapBlock:^{
                 [self.collectionView.mj_header beginRefreshing];
             }];
+
         } else {
-            [self hideHud];
+            [self.collectionView hideHud];
         }
         [self.collectionView stopRefresh];
         [self.collectionView reloadData];
@@ -118,9 +115,11 @@ static NSString * const reuseIdentifier = @"SearchCell";
         [self.collectionView stopRefresh];
         
         if (isNil(self.searchViewModel.albums)) {
-            [self showHudWithState:HudStateError tapBlock:^{
+            [self.collectionView showState:HudStateError tapBlock:^{
                 [self.collectionView.mj_header beginRefreshing];
             }];
+        } else {
+            [self.collectionView hideHud];
         }
         
     };
@@ -129,18 +128,18 @@ static NSString * const reuseIdentifier = @"SearchCell";
 - (void)initRefresh {
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         if (isNil(self.searchViewModel.albums)) {
-            [self showHudWithState:HudStateLoading tapBlock:nil];
+            [self.collectionView showState:HudStateLoading tapBlock:nil];
         } else {
-            [self hideHud];
+            [self.collectionView hideHud];
         }
         [self.searchViewModel firtPage];
     }];
     
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         if (isNil(self.searchViewModel.albums)) {
-            [self showHudWithState:HudStateLoading tapBlock:nil];
+            [self.collectionView showState:HudStateLoading tapBlock:nil];
         } else {
-            [self hideHud];
+            [self.collectionView hideHud];
         }
         [self.searchViewModel nextPage];
     }];
